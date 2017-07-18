@@ -7,7 +7,7 @@ const menu = [
   {
     fMenuId: '01',
     fMenuName:'Button 按钮',
-    fMenuPath: '/user'
+    fMenuPath: '/componentlist'
   },
   {
     fMenuId: '02',

@@ -5,10 +5,7 @@ import tools from '../utils/tools'
 import _isEmprty from 'lodash/isEmpty'
 import classNames from 'classnames'
 import { Header,Aside} from '../components/Layout/index'
-
 import { Helmet } from 'react-helmet'
-
-import '../themes/index.less'
 import  styles from './app.less'
 import Nprogress from 'nprogress'
 

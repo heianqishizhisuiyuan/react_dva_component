@@ -46,6 +46,15 @@ function RouterConfig({ history, app }) {
             cb(null, require('./routes/Login/component/Login'))
           })
         }
+      },
+      require('./routes/ComponentList/index')(),
+      {
+        path:'*',
+        getComponent(nextState, cb) {
+          require.ensure([], (require)=> {
+            cb(null, require('./routes/NotFound/NotFound'))
+          })
+        }
       }
 
 

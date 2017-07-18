@@ -7,64 +7,46 @@ class User extends React.Component {
 	constructor(props){
 		super()
 		this.state={
-			value: ['0-0-0']
+			arry: ['第一个数','第二个数']
 		}
 		this.onChange=this.onChange.bind(this)
+		this.getHml = this.getHml.bind(this)
 	}
 
 
 	onChange(value) {
-		console.log('onChange ', value, arguments);
-		this.setState({ value });
+
+	console.log(typeof (this.state.arry))
+		let arrry = this.state.arry.slice();
+		arrry.push('你好')
+		this.setState({
+			arry:arrry
+		})
+		console.log(this.state.arry)
 	}
+
+		getHml() {
+			let content = this.state.arry.map(function(index,valu){
+				return<div>{index}+{valu}</div>
+			})
+			return content
+		}
+
+
 	render(){
-	const treeData = [{
-	  label: '节点一',
-	  value: '0-0',
-	  key: '0-0',
-	  children: [{
-		label: '子节点一',
-		value: '0-0-0',
-		key: '0-0-0',
-	  }],
-	}, {
-	  label: '节点二',
-	  value: '0-1',
-	  key: '0-1',
-	  children: [{
-		label: '子节点三',
-		value: '0-1-0',
-		key: '0-1-0',
-	  }, {
-		label: '子节点四',
-		value: '0-1-1',
-		key: '0-1-1',
-	  }, {
-		label: '子节点五',
-		value: '0-1-2',
-		key: '0-1-2',
-	  }],
-	}];
+		console.log(this.state.arry[0])
 
-
-	const tProps = {
-      treeData,
-      value: this.state.value,
-      onChange: this.onChange,
-      multiple: true,
-      treeCheckable: true,
-      searchPlaceholder: '请选择',
-      style: {
-        width: 160,
-		maxHeight: 27
-      },
-    }
-
-
+		let content=this.getHml()
 
   return (
     <div >
-     <TreeSelect {...tProps} />
+    <ul>
+    	<li onDoubleClick={this.onChange}>第一个</li>
+    </ul>
+
+    <div style={{marginTop:'20px'}}>
+    	{content}
+    </div>
     </div>
   );
   }
