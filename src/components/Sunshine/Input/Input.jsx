@@ -45,13 +45,11 @@ class Input extends React.Component {
             styles.input,
             {[styles.isPreIcon]: this.props.preIcon?true:false}
           )}
-
           style={style}
           value={this.state.value}
           onChange={this.handleOnChange}
           onKeyDown={this.handleOnKeyDown}
         />
-
       </div>
 
     )
