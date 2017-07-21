@@ -21,9 +21,12 @@ class Input extends React.Component {
     )
   }
   getOptionList = (data)=> {
-    let optionList = data.map((val,index) => {
-      return <li key={val.index} onClick={this.onClick.bind(this, val.index)}>{val.value} </li>
-    })
+    let optionList
+    if(data.length>0){
+      optionList = data.map((val,index) => {
+        return <li key={val.index} onClick={this.onClick.bind(this, val.index)}>{val.value} </li>
+      })
+    }
     return optionList
   }
   onClick = (index, e) => {

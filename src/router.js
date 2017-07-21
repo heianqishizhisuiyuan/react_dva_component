@@ -47,7 +47,15 @@ function RouterConfig({ history, app }) {
           })
         }
       },
-      require('./routes/ComponentList/index')(),
+      {
+        path: 'componentlist',
+        getComponent(nextState, cb) {
+          require.ensure([], (require) => {
+            registerModel(app,require('./models/componentList'))
+            cb(null, require('./routes//ComponentList/component/ComponentList'))
+          })
+        }
+      },
       {
         path:'*',
         getComponent(nextState, cb) {

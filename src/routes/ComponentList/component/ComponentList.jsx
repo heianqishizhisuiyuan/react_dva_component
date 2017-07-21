@@ -1,7 +1,7 @@
 import React from 'react'
 import { connect} from 'dva'
 import {Icon} from 'antd'
-import{ Button, Input, Search } from '../../../components/Sunshine/index'
+import{ Button, Input, Search, Model } from '../../../components/Sunshine/index'
 import styles from './ComponentList.less';
 
 const nameSpace = 'componentList'
@@ -11,36 +11,25 @@ class ComponentList extends React.Component {
     this.state={
     }
   }
+  componentWillMount() {
+    this.props.dispatch({
+      type: `${nameSpace}/getSelectData`,
+      payload: {
+
+      }
+    })
+  }
   onChange(e) {
     console.log(e)
   }
   getSelect =(value,index)=> {
-    debugger
+
   }
   render(){
-    let options = [
-      {
-        index:1,
-        value: '第一个'
-      },
-      {
-        index:2,
-        value: '第二个'
-      },
-      {
-        index:3,
-        value: '第三个'
-      },
-      {
-        index:4,
-        value: '第四个'
-      },
-      {
-        index:5,
-        value: '第五个'
-      },
-
-    ]
+    let options=[]
+    if(this.props.componentList.selectData && this.props.componentList.selectData.length){
+      options = this.props.componentList.selectData
+    }
     let style={
       width: '200px'
     }
@@ -74,13 +63,23 @@ class ComponentList extends React.Component {
            />
           </div>
         </section>
+        <section className={styles.part}>
+          <label className={styles.partLabel}> 按钮</label>
+          <div className={styles.item}>
+            <Button> 模态框</Button>
+            <Model />
+          </div>
+        </section>
       </div>
     )
   }
 }
 
-function mapStateToProps(state){
-  return{loading: state.loading.global}
+function mapStateToProps({loading, componentList}){
+  return{
+    loading: loading.global,
+    componentList
+  }
 }
 
 export default connect (mapStateToProps)(ComponentList)

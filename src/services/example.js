@@ -6,3 +6,6 @@ export async function query(params) {
 export async function queryMenu() {
   return request('/api/queryMenu')
 }
+export async function querySelectData() {
+  return request('/api/querySelectData')
+}

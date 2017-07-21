@@ -27,9 +27,6 @@ import Nprogress from 'nprogress'
       </div>
     )
   }
-  if(app.dataMenu){
-    console.log(app.dataMenu.data)
-  }
 
 
   return (
