@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'dva';
 import PropTypes from 'prop-types'
-
+import {Input, Icon} from 'antd'
 
 import { Link } from 'dva/router'
 import { Button } from '../../components/Sunshine/index'
@@ -37,7 +37,11 @@ class IndexPage extends React.Component {
         <div className={styles.welcome} />
         <ul className={styles.list}>
           <li>To get started, edit <code>src/index.js</code> and save to reload.</li>
-
+			<li>
+				input框
+				<Input />
+				<Icon type="caret-right" />
+			</li>
           <li> <Link to='/user'>link 跳转到userlist </Link></li>
           112333333333
           <div className={styles.form}>123</div>
