@@ -31,6 +31,8 @@ class IndexPage extends React.Component {
   }
 /*<li> <Button type='primary' size='large' onClick={ this.handleClick } > 跳转到userlist  </Button>  </li>*/
   render(){
+    console.log(this)
+
     return (
       <div className={styles.normal}>
         <h1 className={styles.title}>Yay! Welcome to dva!</h1>

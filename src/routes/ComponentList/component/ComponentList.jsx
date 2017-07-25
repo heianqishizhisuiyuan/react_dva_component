@@ -9,6 +9,7 @@ class ComponentList extends React.Component {
   constructor () {
     super()
     this.state={
+      visible: false
     }
   }
   componentWillMount() {
@@ -25,6 +26,15 @@ class ComponentList extends React.Component {
   getSelect =(value,index)=> {
 
   }
+  showModel=()=>{
+    this.setState({
+      visible: true
+    })
+  }
+  onOk = ()=> {
+    alert('确定按钮回调')
+  }
+
   render(){
     let options=[]
     if(this.props.componentList.selectData && this.props.componentList.selectData.length){
@@ -46,7 +56,7 @@ class ComponentList extends React.Component {
           <div className={styles.item}>
             <Input
               onChange={this.onChange.bind(this)}
-              preIcon = {<Icon type = 'user'/>}
+             preIcon = {<Icon type = 'user'/>}
             />
           </div>
           <div className={styles.item}>
@@ -66,8 +76,14 @@ class ComponentList extends React.Component {
         <section className={styles.part}>
           <label className={styles.partLabel}> 按钮</label>
           <div className={styles.item}>
-            <Button> 模态框</Button>
-            <Model />
+            <Button onClick={this.showModel}> 模态框</Button>
+            <Model
+              visible={this.state.visible}
+              onOk={this.onOk}
+              title='弹出框'
+            >
+            <div>这是内容</div>
+            </Model>
           </div>
         </section>
       </div>
