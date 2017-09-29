@@ -1,4 +1,4 @@
-'user strict'
+/*'user strict'
 
 const qs = require('qs');
 const mockjs = require('mockjs');
@@ -66,3 +66,4 @@ module.exports = {
   },
 
 }
+*/
