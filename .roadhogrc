@@ -1,4 +1,10 @@
 {
+  "proxy": {
+   "/": {
+    "target": "http://localhost:5210/",
+    "changeOrigin": true
+   }
+  },
   "entry": "src/index.js",
   "env": {
     "development": {
