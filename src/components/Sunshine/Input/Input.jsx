@@ -40,6 +40,7 @@ class Input extends React.Component {
       <div style = {{display:'inline-block', position:'relative'}}>
         {preIcon}
         <input
+          ref = {this.props.inputRef}
           type={type}
           className={classNames(
             styles.input,

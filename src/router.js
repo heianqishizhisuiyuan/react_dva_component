@@ -1,6 +1,9 @@
 import React from 'react';
 import ProTypes from 'prop-types'
-import { Router, Route } from 'dva/router';
+import {
+  Router,
+  Route
+} from 'dva/router';
 import App from './routes/app';
 
 
@@ -18,63 +21,63 @@ const registerModel = (app, model) => {
   }
 }
 
-function RouterConfig({ history, app }) {
-	const routes = [
-	{
+function RouterConfig({
+  history,
+  app
+}) {
+  const routes = [{
       path: '/',
       component: App,
       getIndexRoute(nextState, cb) {
         require.ensure([], require => {
           registerModel(app, require('./models/IndexPage'))
-          cb(null, { component: require('./routes/index/IndexPage') })
+          cb(null, {
+            component: require('./routes/index/IndexPage')
+          })
         }, 'dashboard')
       },
-    childRoutes: [
-      {
+      childRoutes: [{
           path: 'user',
-          getComponent (nextState, cb) {
+          getComponent(nextState, cb) {
             require.ensure([], require => {
-              cb(null,  require('./routes/user/index'))
+              cb(null, require('./routes/user/index'))
             }, 'user')
           },
-      },
-      {
-        path: 'login',
-        getComponent(nextState, cb) {
-          require.ensure([], (require) => {
-            registerModel(app,require('./models/userLogin'))
-            cb(null, require('./routes/Login/component/Login'))
-          })
+        }, {
+          path: 'login',
+          getComponent(nextState, cb) {
+            require.ensure([], (require) => {
+              registerModel(app, require('./models/userLogin'))
+              cb(null, require('./routes/Login/component/Login'))
+            })
+          }
+        }, {
+          path: 'componentlist',
+          getComponent(nextState, cb) {
+            require.ensure([], (require) => {
+              registerModel(app, require('./models/componentList'))
+              cb(null, require('./routes//ComponentList/component/ComponentList'))
+            })
+          }
+        }, {
+          path: '*',
+          getComponent(nextState, cb) {
+            require.ensure([], (require) => {
+              cb(null, require('./routes/NotFound/NotFound'))
+            })
+          }
         }
-      },
-      {
-        path: 'componentlist',
-        getComponent(nextState, cb) {
-          require.ensure([], (require) => {
-            registerModel(app,require('./models/componentList'))
-            cb(null, require('./routes//ComponentList/component/ComponentList'))
-          })
-        }
-      },
-      {
-        path:'*',
-        getComponent(nextState, cb) {
-          require.ensure([], (require)=> {
-            cb(null, require('./routes/NotFound/NotFound'))
-          })
-        }
-      }
 
 
-	  ]
+      ]
     },
 
 
-	]
+  ]
 
 
   return (
-     <Router history={history} routes={routes} />
+    <Router history={history} routes={routes} />
   );
 }
 

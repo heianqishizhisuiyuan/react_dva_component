@@ -27,8 +27,7 @@ export default {
     },
     *test({payload},{call, put, select}){
       const name = yield select()
-      debugger
-     yield put({
+      yield put({
        type: 'save',
        payload: payload
      })
